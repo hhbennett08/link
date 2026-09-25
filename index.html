@@ -3,14 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>Redirecting…</title>
-  <!-- Change the URL in the three places below -->
-  <meta http-equiv="refresh" content="0; url=https://example.com">
-  <link rel="canonical" href="https://example.com">
+  <meta id="redirect" http-equiv="refresh" content="0; url=https://example.com">
   <script>
-    window.location.replace("https://example.com");
+    var url = document.getElementById("redirect").content.split("url=")[1];
+    window.location.replace(url);
   </script>
 </head>
 <body>
-  <p>Redirecting… If nothing happens, <a href="https://example.com">click here</a>.</p>
+  <p>Redirecting… If nothing happens, <a id="fallback" href="#">click here</a>.</p>
+  <script>
+    document.getElementById("fallback").href = url;
+  </script>
 </body>
 </html>
+ 
